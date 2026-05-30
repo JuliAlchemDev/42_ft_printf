@@ -15,6 +15,7 @@ int main() {
 */
 
 // Learn more about printf specifiers to implement for this project
+/*
 int main() {
  
     char ch = 'A';
@@ -60,4 +61,28 @@ int main() {
     // printf("Variation 2: %%\n", '%'); -> data argument not used by format string
 
     return 0;
+}
+*/
+
+// Variadic Functions 
+// [GeeksForGeeks](https://www.geeksforgeeks.org/c/variadic-functions-in-c/)
+
+#include <stdarg.h>
+
+void print(int n, ...)
+{
+    va_list args;
+    va_start(args, n);
+
+    for(int i = 0; i < n; i++)
+        printf("%d ", va_arg(args, int)); // retrieve Args -> va_arg(list, type)
+    printf("\n");
+
+    va_end(args);
+}
+
+int main()
+{
+    print(3, 1, 2, 3);
+    print(5, 1, 2, 3, 4, 5);
 }
