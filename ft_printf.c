@@ -44,8 +44,15 @@ int main() {
    
 
     // TODO: discover what hex int is, usage and behaviour 
-    // printf("Hexadecimal integer (lower): %x\n");
-    // printf("Hexadecimal integer (upper): %X\n");
+
+    // Base 2: 0-1;
+    // Base 10: 0-9;
+    // Base 16: 0-9 y a-f
+
+    char str[10] = "Hello";
+    printf("Hexadecimal integer (lower): %x\n", &str); //3cb065c6
+    printf("Hexadecimal integer (upper): %X\n", &str); //3CB065C6
+    printf("Pointer STR: %p\n", &str); // 0x7ffd3cb065c6
 
     printf("Percent symbol: %%\n"); 
     // %% accepts no arguments, %  alone is undefined behaviour
