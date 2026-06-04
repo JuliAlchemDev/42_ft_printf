@@ -95,7 +95,7 @@ int main()
 
 // 1. One occurrence of %c in str
 
-
+/*
 #include <unistd.h>
 #include <stdio.h>
 
@@ -119,4 +119,33 @@ int main()
         write(1, &ch_3, 1);
     }
 }
+*/
 
+// 2. Multiples occurrences of %c in str
+
+#include <unistd.h>
+#include <stdio.h>
+
+int main()
+{
+    char *str_1;
+    str_1 = "j%cj%cj%c";
+    
+    char ch_1 ='e';
+    size_t i = 0;
+   
+   
+    while(str_1[i])
+    {
+       if(str_1[i] != '%')
+       {
+            write(1, &str_1[i], 1);
+            i++;
+       }
+       else if(str_1[i] == '%' && str_1[i+1] == 'c')
+       {
+           write(1, &ch_1, 1);
+           i += 2;
+       }
+    }
+}
