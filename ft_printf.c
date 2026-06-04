@@ -66,7 +66,7 @@ int main() {
 
 // Variadic Functions 
 // [GeeksForGeeks](https://www.geeksforgeeks.org/c/variadic-functions-in-c/)
-
+/*
 #include <stdarg.h>
 
 void print(int n, ...)
@@ -86,3 +86,37 @@ int main()
     print(3, 1, 2, 3);
     print(5, 1, 2, 3, 4, 5);
 }
+*/ 
+
+
+// -----------------------------------
+// Working on ft_printf functionalities 
+// -----------------------------------
+
+// 1. One occurrence of %c in str
+
+
+#include <unistd.h>
+#include <stdio.h>
+
+int main()
+{
+    char *str_1;
+    str_1 = "Hello%c";
+
+    char ch_1 ='e';
+    char ch_2 ='o';
+    char ch_3 ='!';
+    size_t i = 0;
+   
+    while(str_1[i] && str_1[i] != '%')
+    {
+        write(1, &str_1[i], 1);
+        i++;
+    }
+    if(str_1[i] == '%' && str_1[i+1] == 'c')
+    {
+        write(1, &ch_3, 1);
+    }
+}
+
