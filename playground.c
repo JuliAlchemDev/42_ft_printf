@@ -333,8 +333,8 @@ int main()
     2.3 implement ft_printf to iterate the string, call ft_check_format and count total length
 
 3. Implementation: 
-    3.1 ft_putchar to write a char and return 1
-    3.2 ft_putstr to write a str and return len of the string
+    3.1 ft_putchar to write a char and return 1 ✅
+    3.2 ft_putstr to write a str and return len of the string ✅
     3.3 ft_handle_specifier to look for %c %s
     3.4 ft_printf to count a length
 */
