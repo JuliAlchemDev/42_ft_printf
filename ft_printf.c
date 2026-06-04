@@ -152,7 +152,7 @@ int main()
 */
 
 // 3. Handle Multiples occurrences of %c in str in Variadic Function
-
+/*
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -193,4 +193,62 @@ int main()
     
     ft_printf("H%cll%c%c\n", ch_1, ch_2, ch_3);
     printf("H%cll%c%c", ch_1, ch_2, ch_3);
+}
+*/
+
+// 4. Handle Multiples occurrences of %c and %s in Variadic Function
+
+#include <unistd.h>
+#include <stdarg.h>
+#include <stdio.h>
+
+int ft_printf(char const *str, ...)
+{
+    va_list args;
+    va_start(args, str); 
+    
+    size_t i = 0;
+    
+    while(str[i])
+    {
+        if(str[i] != '%')
+        {
+            write(1, &str[i], 1);
+            i++;
+        }
+        else if(str[i] == '%' && str[i + 1] == 'c')
+        {
+            char ch = va_arg(args, int);
+            write(1, &ch, 1); 
+            i += 2;
+        }
+        
+       
+        else if(str[i] == '%' && str[i + 1] == 's' )
+        {
+            int count = 0;
+            char *str_param = va_arg(args, char *);
+            while(str_param[count])
+            {
+                write(1, &str_param[count], 1);
+                count++;
+            }
+            i += 2;
+        }
+        
+    }
+    va_end(args);
+    return 0;
+}
+
+int main()
+{
+    char ch_1 = 'e';
+    char ch_2 = 'o';
+    char ch_3 = '!';
+    char *str_1 = "World";
+    char *str_2 = "awsome!";
+    
+    ft_printf("H%cll%c %s%c The 42 is %s\n", ch_1, ch_2, str_1, ch_3, str_2);
+    printf("H%cll%c %s%c The %d is %s", ch_1, ch_2, str_1, ch_3, 42, str_2);
 }
