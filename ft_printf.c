@@ -255,7 +255,7 @@ int main()
 */
 
 // 5. Recall how to print number using write() and recursion, and count the length of formatted number
-
+/*
 #include <unistd.h>
 #include <stdio.h>
 
@@ -290,4 +290,36 @@ int main()
     printf(" - length: %d\n", ft_putnbr(42));
     printf(" - length: %d\n", ft_putnbr(-42));
     printf(" - length: %d\n", ft_putnbr(-0));
+}
+*/
+
+// 6. Discover how to handle hexadecimal numbers using recursion and a base string
+
+#include <stdio.h>
+#include <unistd.h>
+
+void ft_putnbr_hex(unsigned long num, char format)
+{
+    int mod;
+    char *base;
+
+    mod = 0;
+    if(format == 'x')
+        base = "0123456789abcdef";
+    else if(format == 'X')
+        base = "0123456789ABCDEF";
+         
+    if(num > 15)
+    {
+       ft_putnbr_hex((num / 16), format);
+    }
+    mod = num % 16;
+    write(1, &base[mod], 1);
+}
+
+int main()
+{
+    ft_putnbr_hex(42, 'X');
+    write(1, "\n", 1);
+    ft_putnbr_hex(255, 'x');
 }
