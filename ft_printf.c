@@ -122,7 +122,7 @@ int main()
 */
 
 // 2. Multiples occurrences of %c in str
-
+/*
 #include <unistd.h>
 #include <stdio.h>
 
@@ -148,4 +148,49 @@ int main()
            i += 2;
        }
     }
+}
+*/
+
+// 3. Handle Multiples occurrences of %c in str in Variadic Function
+
+#include <unistd.h>
+#include <stdio.h>
+#include <stdarg.h>
+
+int ft_printf(char const *str, ...)
+{
+    va_list args;
+    va_start(args, str); 
+    
+    size_t i = 0;
+    while(str[i])
+    {
+        if(str[i] != '%')
+        {
+            write(1, &str[i], 1);
+            i++;
+        }
+        else if(str[i + 1] == 'c')
+        {
+            char ch = va_arg(args, int);
+            write(1, &ch, 1); 
+            i += 2;
+        }
+        else {
+            write(1, &str[i], 1);
+            i++;
+        }
+    }
+    va_end(args);
+    return 0;
+}
+
+int main()
+{
+    char ch_1 = 'e';
+    char ch_2 = 'o';
+    char ch_3 = '!';
+    
+    ft_printf("H%cll%c%c\n", ch_1, ch_2, ch_3);
+    printf("H%cll%c%c", ch_1, ch_2, ch_3);
 }
