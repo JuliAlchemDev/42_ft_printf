@@ -323,3 +323,18 @@ int main()
     write(1, "\n", 1);
     ft_putnbr_hex(255, 'x');
 }
+
+// TODO:
+/*
+1. rename ft_printf.c to playground.c to save all discovery process.
+2. scaffold the project:
+    2.1 create ft_putchar, ft_putstr, ft_putnbr, ft_putnbr_hex, ft_putptr utilities functions
+    2.2 implement ft_check_format (or ft_handle_specifier) to dispatch each specifier
+    2.3 implement ft_printf to iterate the string, call ft_check_format and count total length
+
+3. Implementation: 
+    3.1 ft_putchar to write a char and return 1
+    3.2 ft_putstr to write a str and return len of the string
+    3.3 ft_handle_specifier to look for %c %s
+    3.4 ft_printf to count a length
+*/
