@@ -196,8 +196,8 @@ int main()
 }
 */
 
-// 4. Handle Multiples occurrences of %c and %s in Variadic Function
-
+// 4. Handle Multiple occurrences of %c and %s in Variadic Function
+/*
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -251,4 +251,43 @@ int main()
     
     ft_printf("H%cll%c %s%c The 42 is %s\n", ch_1, ch_2, str_1, ch_3, str_2);
     printf("H%cll%c %s%c The %d is %s", ch_1, ch_2, str_1, ch_3, 42, str_2);
+}
+*/
+
+// 5. Recall how to print number using write() and recursion, and count the length of formatted number
+
+#include <unistd.h>
+#include <stdio.h>
+
+int ft_putnbr(int num)
+{
+    int ch;
+    int len; 
+    len = 0;
+    ch = '0';
+    
+    if(num == -2147483648) 
+    {
+        write(1, "-2147483648", 11);
+        len += 11;
+        return len;
+    }
+    if (num < 0)
+    {
+        write(1, "-", 1);
+        num *= -1;
+        len += 1;
+    }
+    if (num > 9)
+        len += ft_putnbr(num / 10);
+    ch += num % 10;
+    write(1, &ch, 1);
+    return len + 1;
+}
+
+int main()
+{
+    printf(" - length: %d\n", ft_putnbr(42));
+    printf(" - length: %d\n", ft_putnbr(-42));
+    printf(" - length: %d\n", ft_putnbr(-0));
 }
