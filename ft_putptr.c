@@ -1,0 +1,26 @@
+#include <unistd.h>
+
+static int ft_putnbr_hex_ptr(unsigned long nbr)
+{
+    char *base;
+    int len;
+
+    len = 0;
+    if(nbr > 15)
+        len += ft_putnbr_hex_ptr(nbr / 16);
+    base = "0123456789abcdef";
+    write(1, &base[nbr % 16], 1);
+    len++;
+    return (len);
+}
+
+int ft_putptr(void *ptr)
+{
+    int len;
+
+    len = 0;
+    write(1, "0x", 2);
+    len += 2;
+    len += ft_putnbr_hex_ptr((unsigned long)ptr);
+    return (len);
+}
