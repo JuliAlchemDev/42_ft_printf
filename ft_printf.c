@@ -15,8 +15,8 @@ static int handle_specifier(char specifier, va_list args)
         return (ft_putnbr_u(va_arg(args, unsigned int)));
     if(specifier == 'x' || specifier == 'X')
         return (ft_putnbr_hex(va_arg(args, unsigned int), specifier));
-    // TODO
-    // if(specifier == 'p')
+    if(specifier == 'p')
+        return (ft_putptr(va_arg(args, void *)));
     return (0);
 }
 
