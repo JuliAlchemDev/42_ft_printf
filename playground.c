@@ -294,7 +294,7 @@ int main()
 */
 
 // 6. Discover how to handle hexadecimal numbers using recursion and a base string
-
+/*
 #include <stdio.h>
 #include <unistd.h>
 
@@ -323,6 +323,20 @@ int main()
     write(1, "\n", 1);
     ft_putnbr_hex(255, 'x');
 }
+*/
+
+// 7. Testing hexadecimal numbers behaviour in printf function
+/*
+int main()
+{
+    printf("%X\n", 24);         // outputs 18
+    printf("%X\n", -24);        // outputs FFFFFFE8
+    // -24 as unsigned: 2^32 - 24 = 4294967272
+    // %X reinterprets the bits as unsigned int, no sign handling
+    printf("%u\n", -24);        // 4294967272
+    printf("%X\n", 4294967272); // FFFFFFE8 - confirmed
+}
+*/
 
 // TODO:
 /*
@@ -335,6 +349,18 @@ int main()
 3. Implementation: 
     3.1 ft_putchar to write a char and return 1 ✅
     3.2 ft_putstr to write a str and return len of the string ✅
-    3.3 ft_handle_specifier to look for %c %s
-    3.4 ft_printf to count a length
+    3.3 ft_handle_specifier to look for %c %s ✅
+    3.4 ft_printf to count a length ✅
+
+    3.5 ft_putnbr to handle numbers and count a length of created str ✅
+    3.6 ft_putnbr_u to handle unsigned numbers and count a length of created str ✅
+    3.7 ft_putnbr_hex to handle unsigned numbers and count a length of created str ✅
+
+    3.9 ft_putptr to handle pointer value and return its length ✅
+
+4. Final Organization and documentation:    
+    4.1   clean up project extracting headers from functions ✅
+    4.2   prepare final version of Makefile ✅
+    4.3   test ft_printf ✅
+    4.4   add README.md
 */
