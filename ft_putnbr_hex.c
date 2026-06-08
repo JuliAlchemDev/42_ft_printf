@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include "ft_printf.h"
 
 int ft_putnbr_hex(unsigned int nbr, char format)
 {
@@ -7,10 +7,10 @@ int ft_putnbr_hex(unsigned int nbr, char format)
     int len;
 
     len = 0;
-    if (format == 'x')
-        base = "0123456789abcdef";
-    else if (format == 'X')
+    if (format == 'X')
         base = "0123456789ABCDEF";
+    else 
+        base = "0123456789abcdef"; 
     if(nbr > 15)
         len += ft_putnbr_hex(nbr / 16, format);
     i = nbr % 16;
