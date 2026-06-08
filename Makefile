@@ -1,16 +1,24 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+LIB = ar rcs
 
-NAME = test
+NAME = libftprintf.a
 
-SRCS = ft_printf.c
+SRCS =  ft_printf.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		ft_putnbr.c \
+		ft_putnbr_u.c \
+		ft_putnbr_hex.c \
+		ft_putptr.c \
 
 OBJS = $(SRCS:.c=.o)
+INCLUDE = ft_printf.h
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(INCLUDE)
+	$(LIB) $(NAME) $(OBJS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@
