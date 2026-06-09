@@ -6,7 +6,7 @@
 /*   By: iualkhim <iualkhim@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 19:08:45 by iualkhim          #+#    #+#             */
-/*   Updated: 2026/06/08 19:10:00 by iualkhim         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:26:16 by iualkhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,17 @@ int	ft_putptr(void *ptr)
 {
 	int	len;
 
-	len = 0;
-	write(1, "0x", 2);
-	len += 2;
-	len += ft_putnbr_hex_ptr((unsigned long)ptr);
+	if (ptr == 0)
+	{
+		write(1, "(nil)", 5);
+		len = 5;
+	}
+	else
+	{
+		len = 0;
+		write(1, "0x", 2);
+		len += 2;
+		len += ft_putnbr_hex_ptr((unsigned long)ptr);
+	}
 	return (len);
 }
